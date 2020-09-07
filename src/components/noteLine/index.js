@@ -6,13 +6,10 @@ const NoteLine = ({noteContent,idx,createLine,insertContent}) =>{
     useEffect(()=>{
         editableDiv.current.innerText = content;
         return(()=>{
-            if(content!== editableDiv.current.innerText){  
-                insertContent(idx,editableDiv.current.innerText);
-            }
         })
     })
     return(
-    <section onKeyPress={(e)=>createLine(e,idx)}>
+    <section onKeyPress={(e)=>createLine(e,idx,)}>
         <div contentEditable="true" className={"note " + type} ref={editableDiv}>
         </div>
     </section>);

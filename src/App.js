@@ -15,30 +15,20 @@ const App = () =>{
     return(()=>{
     })
   },[notes])
-  const insertContent = (idx,value)=>{
-    let tmpNotes = [...notes];
-    if(tmpNotes[idx].content !== value){
-      tmpNotes[idx].content = value;
-      setNotes(tmpNotes);
-    }
-  }
-
   
   const createLine = useCallback((e, index) =>{//엔터 누를때 다음줄에 contents생성
     if(e.key=== "Enter"){
       e.preventDefault();
-
       const newContent = [...notes.slice(0,index+1),{
           type : "none",
           content:""
         },...notes.slice(index+1)];
-        console.log(newContent)
-        
+        newContent[index].content =e.target.innerText;
         setNotes(newContent);
     }
   },[notes])
   const noteLines = notes.map((content,idx)=>(
-    <NoteLine key={idx} noteContent={content} idx={idx} insertContent={insertContent} createLine={createLine} />
+    <NoteLine key={idx} noteContent={content} idx={idx}  createLine={createLine} />
   ))
 
 
