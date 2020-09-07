@@ -15,6 +15,13 @@ const App = () =>{
     return(()=>{
     })
   },[notes])
+  const insertContent = (idx,value)=>{
+    let tmpNotes = [...notes];
+    if(tmpNotes[idx].content !== value){
+      tmpNotes[idx].content = value;
+      setNotes(tmpNotes);
+    }
+  }
 
   
   const createLine = useCallback((e, index) =>{//엔터 누를때 다음줄에 contents생성
@@ -26,15 +33,12 @@ const App = () =>{
           content:""
         },...notes.slice(index+1)];
         console.log(newContent)
+        
         setNotes(newContent);
-    }else{   // contents 변경contents를 어떻게 저장해야되지.. 
-      let changingNote = [...notes];
-      changingNote[index].content = e.target.innerText+e.key;
-      setNotes(changingNote);
     }
   },[notes])
   const noteLines = notes.map((content,idx)=>(
-    <NoteLine key={idx} noteContent={content} idx={idx} createLine={createLine} />
+    <NoteLine key={idx} noteContent={content} idx={idx} insertContent={insertContent} createLine={createLine} />
   ))
 
 
