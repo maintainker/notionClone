@@ -17,14 +17,19 @@ const App = () =>{
   },[notes])
   
   const createLine = useCallback((e, index) =>{//엔터 누를때 다음줄에 contents생성
-    if(e.key=== "Enter"){
+    
+    if(e.type === "keypress" && e.key=== "Enter"){
       e.preventDefault();
       const newContent = [...notes.slice(0,index+1),{
-          type : "none",
-          content:""
-        },...notes.slice(index+1)];
-        newContent[index].content =e.target.innerText;
-        setNotes(newContent);
+        type : "none",
+        content:""
+      },...notes.slice(index+1)];
+      newContent[index].content = e.target.innerText;
+      setNotes(newContent);
+    }else if(e.type ==="blur"){ // blur 되도 컨텐츠 저장하게
+      const newContent =[...notes];
+      newContent[index].content =e.target.innerText;
+      setNotes(newContent)
     }
   },[notes])
   const noteLines = notes.map((content,idx)=>(

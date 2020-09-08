@@ -9,7 +9,7 @@ const NoteLine = ({noteContent,idx,createLine,insertContent}) =>{
         })
     })
     return(
-    <section onKeyPress={(e)=>createLine(e,idx,)}>
+    <section onKeyPress={(e)=>createLine(e,idx)} onBlur={(e)=>createLine(e,idx)}>
         <div contentEditable="true" className={"note " + type} ref={editableDiv}>
         </div>
     </section>);
