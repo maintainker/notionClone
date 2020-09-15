@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const NoteLine = ({noteContent,idx,createLine,insertContent}) =>{
+const NoteLine = ({noteContent,idx,createLine}) =>{
     const {type,content}=noteContent;
     const editableDiv = useRef();
     useEffect(()=>{
