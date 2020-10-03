@@ -9,7 +9,6 @@ const App = () =>{
     target:null
   })
   const searchList = useRef(""); 
-
   useEffect(()=>{
     if(notes.length===0){ // note의 length가 0이면 새로운 라인생성
       setNotes([...notes,{
