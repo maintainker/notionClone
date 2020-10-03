@@ -6,7 +6,7 @@ const App = () =>{
   const [notes,setNotes] = useState([]); // 노트를 배열로 저장
   const focus =useRef({
     event:"none",
-    target:null
+    target:null   
   })
   const searchList = useRef(""); 
 
